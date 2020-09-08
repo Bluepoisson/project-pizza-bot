@@ -16,24 +16,21 @@ const orderName = prompt(
   "Enter the name of the pizza you want to order today."
 );
 
-const checkOrderName = (orderName) => {
-  //   const orderQuantity = prompt(`How many of ${orderName} do you want?`);
+const checkOrderName = () => {
+  // const orderQuantity = prompt(`How many of ${orderName} do you want?`);
+  // const wrongOrder = alert(`Sorry, we don't have that pizza on our menu.`);
 
-  if (
-    orderName === vegetarian ||
-    orderName === hawaiian ||
-    orderName === pepperoni
-  ) {
-    //     const orderQuantity = prompt(`How many of ${orderName} do you want?`);
-    //   } else if (orderName === hawaiian) {
-    //     orderQuantity = prompt(`How many of ${orderName} do you want?`);
-    //   } else if (orderName === pepperoni) {
-
+  if (orderName === vegetarian) {
     const orderQuantity = prompt(`How many of ${orderName} do you want?`);
+  } else if (orderName === hawaiian) {
+    orderQuantity = prompt(`How many of ${orderName} do you want?`);
+  } else if (orderName === pepperoni) {
+    orderQuantity = prompt(`How many of ${orderName} do you want?`);
   } else {
     const wrongOrder = alert(`Sorry, we don't have that pizza on our menu.`);
   }
 };
+//why didn't orderName work when in if function?
 
 checkOrderName();
 
