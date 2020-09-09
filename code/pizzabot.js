@@ -36,9 +36,9 @@ if (validateOrderName(orderName)) {
     `Great, I'll get started on your ${orderName} right away, it will cost ${orderTotal} kr`
   );
   const cookingTime = () => {
-    if (orderQuantity < 2) {
+    if (orderQuantity <= 2) {
       alert(`The pizzas will take 10 minutes.`);
-    } else if (orderQuantity > 2 && orderQuantity < 6) {
+    } else if (3 < orderQuantity < 6) {
       alert(`The pizzas will take 15 minutes.`);
     } else {
       alert(`The pizzas will take 20 minutes.`);
