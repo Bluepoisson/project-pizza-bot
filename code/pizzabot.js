@@ -6,64 +6,51 @@ const pizzaPrice = 80;
 
 //Put your Javscript code here:
 
-console.log(vegetarian, hawaiian, pepperoni, pizzaPrice);
+//test works
+//console.log(`Test if connection HTML-JS works: ${vegetarian}, ${hawaiian} and ${pepperoni}`);
 
 alert(
-  `Hey! Happy to serve your pizza. On our menu we have ${vegetarian}, ${hawaiian} and ${pepperoni}`
+  `Welcome, customer! Happy to serve your pizza. On our menu we have: ${vegetarian}, ${hawaiian} and ${pepperoni}`
 );
 
 const orderName = prompt(
-  "Enter the name of the pizza you want to order today."
+  `Enter the name of the pizza you want to order today:`
 );
 
-const validateOrderName = () => {
+//Function that tests whether the user input matches the pizza name
+const validateOrderName = (orderName) => {
   if (
-    orderName === vegetarian ||
-    orderName === hawaiian ||
-    orderName === pepperoni
+    orderName.toLowerCase() === vegetarian.toLowerCase() ||
+    orderName.toLowerCase() === hawaiian.toLowerCase() ||
+    orderName.toLowerCase() === pepperoni.toLowerCase()
   ) {
     return true;
   } else {
-    alert(`Sorry, we don't have that pizza on our menu.`);
     return false;
   }
 };
 
-if (validateOrderName(orderName)) {
-  const orderQuantity = prompt(`How many of ${orderName} do you want?`);
-  const orderTotal = orderQuantity * pizzaPrice;
-  alert(
-    `Great, I'll get started on your ${orderName} right away, it will cost ${orderTotal} kr`
-  );
-  const cookingTime = () => {
-    if (orderQuantity <= 2) {
-      alert(`The pizzas will take 10 minutes.`);
-    } else if (3 < orderQuantity < 6) {
-      alert(`The pizzas will take 15 minutes.`);
-    } else {
-      alert(`The pizzas will take 20 minutes.`);
-    }
-  };
+var orderQuantity;
+var orderTotal;
 
-  cookingTime();
+if (validateOrderName(orderName)) {
+  orderQuantity = prompt(`How many of ${orderName}s do you want?`);
+  orderTotal = orderQuantity * pizzaPrice;
+  alert(
+    `Great, I'll get started on your ${orderName}s right away, it will cost ${orderTotal} kr.`
+  );
+} else {
+  alert(`Select a pizza from the menu.`);
 }
 
-// const validateOrderName = () => {
+var cookingTime;
+if (orderQuantity <= 2) {
+  cookingTime = 10;
+} else if (orderQuantity >= 3 && orderQuantity < 6) {
+  cookingTime = 15;
+} else cookingTime = 20;
 
-//   if (orderName === vegetarian) {
-//     let orderQuantity = prompt(`How many of ${orderName} do you want?`);
-//   } else if (orderName === hawaiian) {
-//     orderQuantity = prompt(`How many of ${orderName} do you want?`);
-//   } else if (orderName === pepperoni) {
-//     orderQuantity = prompt(`How many of ${orderName} do you want?`);
-//   } else {
-//     const wrongOrder = alert(`Sorry, we don't have that pizza on our menu.`);
-//   }
-// };
-// //why doesn't vegetarian work in if function? we tried
-
-// validateOrderName();
-
-// alert(
-//   `Great, I'll get started on your ${orderName} right away, it will cost ${orderTotal} kr`
-// );
+document.getElementById(
+  "orderSummary"
+).innerHTML = `Thank you for your order! The ${orderName}s are being
+baked as you read this. The total cost is ${orderTotal} kr. The order will take ${cookingTime} minutes.`;
